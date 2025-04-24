@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Sum and Percentage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input Form</h1>
+    <form class="inputForm">
+        <label for="input1">Input 1:</label>
+        <input type="number" class="input-class-1" id="input1" required><br>
+
+        <label for="input2">Input 2:</label>
+        <input type="number" class="input-class-2" id="input2" required><br>
+
+        <label for="input3">Input 3:</label>
+        <input type="number" class="input-class-3" id="input3" required><br>
+
+        <label for="input4">Input 4:</label>
+        <input type="number" class="input-class-4" id="input4" required><br>
+
+        <label for="input5">Input 5:</label>
+        <input type="number" class="input-class-5" id="input5" required><br>
+      <input type="number" class="dm" id="dm" >
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementsByClassName('inputForm')[0].addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get values from input fields
+            const input1 = parseFloat(document.getElementsByClassName('input-class-1')[0].value) || 0;
+            const input2 = parseFloat(document.getElementsByClassName('input-class-2')[0].value) || 0;
+            const input3 = parseFloat(document.getElementsByClassName('input-class-3')[0].value) || 0;
+            const input4 = parseFloat(document.getElementsByClassName('input-class-4')[0].value) || 0;
+            const input5 = parseFloat(document.getElementsByClassName('input-class-5')[0].value) || 0;
+               
+
+             const dm = parseFloat(document.getElementsByClassName('dm')[0].value);
+             console.log('the value of the dm is ',dm)
+            // Calculate sum
+            const sum = input1 + input2 + input3 + input4 + input5;
+
+          
+            const totalPossibleMarks = 500;
+            const overallPercentage = (sum / totalPossibleMarks) * 100;
+
+            // Display results
+            let resultHtml = `<p>Sum: ${sum}</p>`;
+            resultHtml += `<p>Overall Percentage: ${overallPercentage.toFixed(2)}%</p>`;
+
+            document.getElementById('result').innerHTML = resultHtml;
+        });
+    </script>
+</body>
+</html>
